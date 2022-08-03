@@ -1,11 +1,13 @@
 import { CustomError } from "./custom-error";
 
-export class DatabaseConnectionError extends CustomError {
+const errorMessage = "Error Connecting To Database";
+
+class DatabaseConnectionError extends CustomError {
   statusCode = 500;
-  reason = "Error connecting to database";
+  reason = errorMessage;
 
   constructor() {
-    super("Error connecting to db");
+    super(errorMessage);
 
     Object.setPrototypeOf(this, DatabaseConnectionError.prototype);
   }
@@ -14,3 +16,7 @@ export class DatabaseConnectionError extends CustomError {
     return [{ message: this.reason }];
   }
 }
+
+
+export { DatabaseConnectionError as DatabaseConnectionError };
+
